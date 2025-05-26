@@ -144,5 +144,67 @@ public class RestClient {
 		
 		return response;
 	}
+	
+	public <T>Response put(String baseUrl, String endPoint, T body,
+			Map<String, String> queryParams, 
+			Map<String, String> pathParams,
+			AuthType authType,
+			ContentType contentType) {
+	
+		RequestSpecification request = setupRequest(baseUrl, authType, contentType);
+		applyParams(request, queryParams, pathParams);
+		
+		Response response = request.body(body)
+										.put(endPoint)
+											.then()
+												.spec(responseSpec200)
+												.extract()
+													.response();
+		
+		response.prettyPrint();
+		System.out.println("Response Status Code: "+ response.statusCode());
+		return response;
+	}
+	
+	public <T>Response patch(String baseUrl, String endPoint, T body,
+			Map<String, String> queryParams, 
+			Map<String, String> pathParams,
+			AuthType authType,
+			ContentType contentType) {
+	
+		RequestSpecification request = setupRequest(baseUrl, authType, contentType);
+		applyParams(request, queryParams, pathParams);
+		
+		Response response = request.body(body)
+										.post(endPoint)
+											.then()
+												.spec(responseSpec200)
+												.extract()
+													.response();
+		
+		response.prettyPrint();
+		System.out.println("Response Status Code: "+ response.statusCode());
+		return response;
+	}
+	
+	public Response delete(String baseUrl, String endPoint,
+			Map<String, String> queryParams, 
+			Map<String, String> pathParams,
+			AuthType authType,
+			ContentType contentType) {
+	
+		RequestSpecification request = setupRequest(baseUrl, authType, contentType);
+		applyParams(request, queryParams, pathParams);
+		
+		Response response = request.delete(endPoint)
+											.then()
+												.spec(responseSpec204)
+												.extract()
+													.response();
+		
+		response.prettyPrint();
+		System.out.println("Response Status Code: "+ response.statusCode());
+		return response;
+	}
 
 }
