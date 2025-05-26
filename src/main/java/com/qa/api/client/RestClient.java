@@ -26,7 +26,7 @@ public class RestClient {
 	private ResponseSpecification responseSpec200or404 = expect().statusCode(anyOf(equalTo(200), equalTo(404)));
 	
 
-	public RequestSpecification setupRequest(String baseUrl, AuthType authType, ContentType contentType) {
+	private RequestSpecification setupRequest(String baseUrl, AuthType authType, ContentType contentType) {
 
 		RequestSpecification request = RestAssured.given().log().all()
 													.baseUri(baseUrl)
@@ -57,7 +57,7 @@ public class RestClient {
 		return request;
 	}
 
-	public void applyParams(RequestSpecification request, Map<String, String> queryParams, Map<String, String> pathParams) {
+	private void applyParams(RequestSpecification request, Map<String, String> queryParams, Map<String, String> pathParams) {
 
 		if (queryParams != null) {
 			request.queryParams(queryParams);
@@ -72,6 +72,16 @@ public class RestClient {
 	
 	// Get:
 	
+	/**
+	 * This method is used to call GET APIs
+	 * @param baseUrl
+	 * @param endPoint
+	 * @param queryParams
+	 * @param pathParams
+	 * @param authType
+	 * @param contentType
+	 * @return it returns the GET API call response
+	 */
 	public Response get(String baseUrl, String endPoint, 
 					Map<String, String> queryParams, 
 					Map<String, String> pathParams,
@@ -81,10 +91,10 @@ public class RestClient {
 		applyParams(request, queryParams, pathParams);
 		Response response = request.get(endPoint).then().spec(responseSpec200or404).extract().response();
 		
-		response.prettyPrint();
+		System.out.println("Response Status Code: "+ response.statusCode());
+		response.prettyPrint();		
 		
 		return response;
-								
 	}
 
 }
