@@ -10,12 +10,14 @@ public class BaseTest {
 
 	/******************************** API Base URLs ********************************/
 	protected final static String BASE_URL_GOREST = "https://gorest.co.in";
+	protected final static String BASE_URL_CONTACTS = "https://thinking-tester-contact-list.herokuapp.com";
 	
 	
 	
 	/******************************** API EndPoints ********************************/
 	protected final static String GOREST_USERS_ENDPOINT = "/public/v2/users";
-	
+	protected final static String CONTACTS_LOGIN_ENDPOINT = "/users/login";
+	protected final static String CONTACTS_ENDPOINT = "/contacts";
 	
 	
 	@BeforeTest
