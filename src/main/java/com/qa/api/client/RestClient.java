@@ -1,6 +1,7 @@
 package com.qa.api.client;
 
 import java.io.File;
+import java.util.Base64;
 import java.util.Map;
 
 import com.qa.api.constants.AuthType;
@@ -42,7 +43,7 @@ public class RestClient {
 			request.header("Authorization", "Bearer " + "oauth2 token");
 			break;
 		case BASIC_AUTH:
-			request.header("Authorization", "Basic " + "==basicauth token==");
+			request.header("Authorization", "Basic "+ generateBasicAuthToken());
 			break;
 		case API_KEY:
 			request.header("x-api-key", "api key");
@@ -56,6 +57,12 @@ public class RestClient {
 		}
 
 		return request;
+	}
+	
+	private String generateBasicAuthToken() {
+		String credentials = ConfigManager.get("basicauthusername") + ":" + ConfigManager.get("basicauthpassword");
+		//admin:admin --> "YWRtaW46YWRtaW4=" (base64 encoded value)
+		return Base64.getEncoder().encodeToString(credentials.getBytes());
 	}
 
 	private void applyParams(RequestSpecification request, Map<String, String> queryParams, Map<String, String> pathParams) {
