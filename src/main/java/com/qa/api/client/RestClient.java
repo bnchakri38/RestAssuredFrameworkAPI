@@ -39,9 +39,6 @@ public class RestClient {
 		case BEARER_TOKEN:
 			request.header("Authorization", "Bearer " + ConfigManager.get("bearertoken"));
 			break;
-		case OAUTH2:
-			request.header("Authorization", "Bearer " + "oauth2 token");
-			break;
 		case BASIC_AUTH:
 			request.header("Authorization", "Basic "+ generateBasicAuthToken());
 			break;
@@ -149,6 +146,23 @@ public class RestClient {
 		System.out.println("Response Status Code: "+ response.statusCode());		
 		response.prettyPrint();
 		
+		return response;
+	}
+	
+	public Response post(String baseUrl, String endPoint,
+							String clientId, String clientSecret, String grantType, 
+							ContentType contentType) {
+		
+		Response response = RestAssured.given()
+											.contentType(contentType)
+											.formParam("grant_type", grantType)
+											.formParam("client_id", clientId)
+											.formParam("client_secret", clientSecret)
+											.when()
+												.post(baseUrl+endPoint);
+				
+		System.out.println("Response Status Code: "+ response.statusCode());	
+		response.prettyPrint();
 		return response;
 	}
 	

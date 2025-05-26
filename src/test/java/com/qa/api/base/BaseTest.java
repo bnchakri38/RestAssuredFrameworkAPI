@@ -14,6 +14,7 @@ public class BaseTest {
 	protected final static String BASE_URL_REQRES = "https://reqres.in";
 	protected final static String BASE_URL_BASIC_AUTH = "https://the-internet.herokuapp.com";
 	protected final static String BASE_URL_PRODUCTS = "https://fakestoreapi.com";
+	protected final static String BASE_URL_OAUTH2_AMADEUS = "https://test.api.amadeus.com";
 	
 	
 	
@@ -24,6 +25,9 @@ public class BaseTest {
 	protected final static String REQRES_ENDPOINT = "/api/users";
 	protected final static String BASIC_AUTH_ENDPOINT = "/basic_auth";
 	protected final static String PRODUCTS_ENDPOINT = "/products";
+	protected final static String AMADEUS_OATUH2_TOKEN_ENDPOINT = "/v1/security/oauth2/token";
+	protected final static String AMADEUS_FLIGHT_DEST_ENDPOINT = "/v1/shopping/flight-destinations";
+	
 	
 	@BeforeTest
 	public void setup() {
