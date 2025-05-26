@@ -1,5 +1,6 @@
 package com.qa.api.client;
 
+import java.io.File;
 import java.util.Map;
 
 import com.qa.api.constants.AuthType;
@@ -93,6 +94,53 @@ public class RestClient {
 		
 		System.out.println("Response Status Code: "+ response.statusCode());
 		response.prettyPrint();		
+		
+		return response;
+	}
+	
+	// Post: 
+		// <T> indicates ANY Type (Body)
+	
+	public <T>Response post(String baseUrl, String endPoint, T body,
+			Map<String, String> queryParams, 
+			Map<String, String> pathParams,
+			AuthType authType,
+			ContentType contentType) {
+	
+		RequestSpecification request = setupRequest(baseUrl, authType, contentType);
+		applyParams(request, queryParams, pathParams);
+		
+		Response response = request.body(body)
+										.post(endPoint)
+											.then()
+												.spec(responseSpec200or201)
+												.extract()
+													.response();
+		
+		System.out.println("Response Status Code: "+ response.statusCode());		
+		response.prettyPrint();
+
+		return response;
+	}
+	
+	public Response post(String baseUrl, String endPoint, File filePath,
+			Map<String, String> queryParams, 
+			Map<String, String> pathParams,
+			AuthType authType,
+			ContentType contentType) {
+	
+		RequestSpecification request = setupRequest(baseUrl, authType, contentType);
+		applyParams(request, queryParams, pathParams);
+		
+		Response response = request.body(filePath)
+										.post(endPoint)
+											.then()
+												.spec(responseSpec200or201)
+												.extract()
+													.response();
+		
+		System.out.println("Response Status Code: "+ response.statusCode());		
+		response.prettyPrint();
 		
 		return response;
 	}
