@@ -35,7 +35,7 @@ public class CreateUserTest extends BaseTest {
 //		User user = new User("Narayana", "nb001@gmail.com", "male", "active");
 		
 		// 2. Random EmailID Approach 
-		User user = new User("Chakri", StringUtils.getRandomEmailId(), "male", "active");
+		User user = new User(null, "Chakri", StringUtils.getRandomEmailId(), "male", "active");
 		
 		Response response = restClient.post(BASE_URL_GOREST, GOREST_USERS_ENDPOINT, user, null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
 		

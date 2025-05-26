@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @JsonInclude(Include.NON_NULL)
 public class User {
 	
+	private String id;
 	private String name;
 	private String email; 
 	private String gender;
