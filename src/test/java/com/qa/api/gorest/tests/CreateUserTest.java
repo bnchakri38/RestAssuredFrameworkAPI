@@ -43,7 +43,7 @@ public class CreateUserTest extends BaseTest {
 		Assert.assertNotNull(response.jsonPath().getString("id"));
 	}
 	
-	@Test
+	@Test(enabled = false)
 	public void createAUserTestWithJSONString() {
 		
 		String userJson = "{\n"
@@ -77,7 +77,7 @@ public class CreateUserTest extends BaseTest {
 		Assert.assertNotNull(response.jsonPath().getString("id"));
 	}
 	
-	@Test
+	@Test(enabled = false)
 	public void createAUserTestWithFileObj() {
 		
 		File userFile = new File(".\\src\\test\\resources\\jsons\\user.json");

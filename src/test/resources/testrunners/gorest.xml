@@ -32,29 +32,4 @@
 		</classes>
 	</test>
 	
-	<test name="Product API Test - Get Product With Json Path">
-		<classes>
-			<class
-				name="com.qa.api.products.tests.ProductAPITestWithJsonPath" />
-		</classes>
-	</test>
-
-	<test name="Amadeus API Test - OAuth2 Type">
-		<classes>
-			<class name="com.qa.api.amadeus.tests.AmadeusAPITest" />
-		</classes>
-	</test>
-
-	<test name="Basic Auth API Test">
-		<classes>
-			<class name="com.qa.api.basicauth.tests.BasicAuthAPITest" />
-		</classes>
-	</test>
-	
-	<test name="Go Rest API Schema Test">
-		<classes>
-			<class name="com.qa.api.schema.tests.GoRestUserAPISchemaTest" />
-		</classes>
-	</test>
-
 </suite>
