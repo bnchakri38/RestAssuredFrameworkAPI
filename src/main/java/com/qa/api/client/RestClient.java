@@ -12,6 +12,7 @@ import com.qa.api.manager.ConfigManager;
 import static io.restassured.RestAssured.expect;
 import static org.hamcrest.Matchers.*;
 
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -93,6 +94,7 @@ public class RestClient {
 	 * @param contentType
 	 * @return it returns the GET API call response
 	 */
+	// @Step("Calling get api with base url: {0}")
 	public Response get(String baseUrl, String endPoint, 
 					Map<String, String> queryParams, 
 					Map<String, String> pathParams,
