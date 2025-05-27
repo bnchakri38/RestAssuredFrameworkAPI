@@ -73,6 +73,14 @@
 			<version>5.5.1</version>
 			<!-- <scope>test</scope> -->
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.aventstack/chaintest-testng -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>chaintest-testng</artifactId>
+			<version>1.0.12</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

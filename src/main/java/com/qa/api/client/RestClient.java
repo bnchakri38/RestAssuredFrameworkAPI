@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Base64;
 import java.util.Map;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.api.constants.AuthType;
 import com.qa.api.exceptions.APIExceptions;
 import com.qa.api.manager.ConfigManager;
@@ -29,7 +30,11 @@ public class RestClient {
 	
 
 	private RequestSpecification setupRequest(String baseUrl, AuthType authType, ContentType contentType) {
-
+		
+		ChainTestListener.log("API Base URL: "+ baseUrl);
+		ChainTestListener.log("AuthType: "+ authType);
+		ChainTestListener.log("ContentType: "+ contentType);
+		
 		RequestSpecification request = RestAssured.given().log().all()
 													.baseUri(baseUrl)
 													.contentType(contentType)
@@ -63,11 +68,12 @@ public class RestClient {
 	}
 
 	private void applyParams(RequestSpecification request, Map<String, String> queryParams, Map<String, String> pathParams) {
-
+		ChainTestListener.log("Query Params:"+ queryParams);
 		if (queryParams != null) {
 			request.queryParams(queryParams);
 		}
 		
+		ChainTestListener.log("Path Params:"+ pathParams);
 		if (pathParams != null) {
 			request.pathParams(pathParams);
 		}

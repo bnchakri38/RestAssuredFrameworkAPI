@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.api.base.BaseTest;
 import com.qa.api.constants.AuthType;
 import com.qa.api.manager.ConfigManager;
@@ -55,6 +56,7 @@ public class UpdateUserTest extends BaseTest{
 		
 		Assert.assertTrue(responseGet.statusLine().contains("OK"));
 		Assert.assertEquals(responseGet.jsonPath().getString("id"), userId);
+		ChainTestListener.log("Newly created User Id:"+ responseGet.jsonPath().getString("id"));
 		
 		// 3. Update the user using the same userId
 			Map<String, String> userBody = new HashMap<String, String>();

@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.api.base.BaseTest;
 import com.qa.api.constants.AuthType;
 import com.qa.api.manager.ConfigManager;
@@ -41,6 +42,7 @@ public class CreateUserTest extends BaseTest {
 		
 		Assert.assertTrue(response.statusLine().contains("Created"));
 		Assert.assertNotNull(response.jsonPath().getString("id"));
+		ChainTestListener.log("Newly created User Id:"+ response.jsonPath().getString("id"));
 	}
 	
 	@Test(enabled = false)

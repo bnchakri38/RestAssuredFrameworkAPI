@@ -6,6 +6,7 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.api.base.BaseTest;
 import com.qa.api.constants.AuthType;
 
@@ -16,6 +17,7 @@ public class GetUserTest extends BaseTest {
 	
 	@Test
 	public void getAllUsersTest() {
+		ChainTestListener.log("Get All Users API Test");
 		Response response = restClient.get(BASE_URL_GOREST, GOREST_USERS_ENDPOINT, null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
 		Assert.assertTrue(response.getStatusLine().contains("OK"));
 	}

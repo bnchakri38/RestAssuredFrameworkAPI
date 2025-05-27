@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.api.base.BaseTest;
 import com.qa.api.constants.AuthType;
 import com.qa.api.manager.ConfigManager;
@@ -46,6 +47,7 @@ public class DeleteUserTest extends BaseTest {
 //				// Fetch the ID:
 				String userId = responsePost.jsonPath().getString("id");
 				System.out.println("Created User ID: "+ userId);
+				ChainTestListener.log("Newly created User Id:"+ responsePost.jsonPath().getString("id"));
 			
 			// 2. Get the user using the above created user userId 
 			Response responseGet = restClient.get(BASE_URL_GOREST, GOREST_USERS_ENDPOINT+"/"+userId, null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
