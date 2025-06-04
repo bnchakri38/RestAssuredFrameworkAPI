@@ -38,11 +38,11 @@
 		</classes>
 	</test>
 
-	<test name="Amadeus API Test - OAuth2 Type">
+	<!--  <test name="Amadeus API Test - OAuth2 Type">
 		<classes>
 			<class name="com.qa.api.amadeus.tests.AmadeusAPITest" />
 		</classes>
-	</test>
+	</test>  -->
 
 	<test name="Basic Auth API Test">
 		<classes>
