@@ -42,7 +42,7 @@ public class CreateUserTest extends BaseTest {
 		
 		Assert.assertTrue(response.statusLine().contains("Created"));
 		Assert.assertNotNull(response.jsonPath().getString("id"));
-		ChainTestListener.log("Newly created User Id:"+ response.jsonPath().getString("id"));
+		ChainTestListener.log("Newly created User Id: "+ response.jsonPath().getString("id"));
 	}
 	
 	@Test(enabled = false)
