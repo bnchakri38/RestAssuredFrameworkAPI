@@ -6,6 +6,7 @@ import org.testng.annotations.Listeners;
 
 import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.api.client.RestClient;
+import com.qa.api.manager.ConfigManager;
 
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
@@ -16,13 +17,21 @@ public class BaseTest {
 	protected RestClient restClient;
 
 	/******************************** API Base URLs ********************************/
-	protected final static String BASE_URL_GOREST = "https://gorest.co.in";
-	protected final static String BASE_URL_CONTACTS = "https://thinking-tester-contact-list.herokuapp.com";
-	protected final static String BASE_URL_REQRES = "https://reqres.in";
-	protected final static String BASE_URL_BASIC_AUTH = "https://the-internet.herokuapp.com";
-	protected final static String BASE_URL_PRODUCTS = "https://fakestoreapi.com";
-	protected final static String BASE_URL_OAUTH2_AMADEUS = "https://test.api.amadeus.com";
-	protected final static String BASE_URL_ERGAST_CIRCUIT = "http://ergast.com";
+	protected static String BASE_URL_GOREST;
+	protected static String BASE_URL_CONTACTS;
+	protected static String BASE_URL_REQRES;
+	protected static String BASE_URL_BASIC_AUTH;
+	protected static String BASE_URL_PRODUCTS;
+	protected static String BASE_URL_OAUTH2_AMADEUS;
+	protected static String BASE_URL_ERGAST_CIRCUIT;
+	
+//	protected final static String BASE_URL_GOREST = "https://gorest.co.in";
+//	protected final static String BASE_URL_CONTACTS = "https://thinking-tester-contact-list.herokuapp.com";
+//	protected final static String BASE_URL_REQRES = "https://reqres.in";
+//	protected final static String BASE_URL_BASIC_AUTH = "https://the-internet.herokuapp.com";
+//	protected final static String BASE_URL_PRODUCTS = "https://fakestoreapi.com";
+//	protected final static String BASE_URL_OAUTH2_AMADEUS = "https://test.api.amadeus.com";
+//	protected final static String BASE_URL_ERGAST_CIRCUIT = "http://ergast.com";
 	
 	
 	/******************************** API EndPoints ********************************/
@@ -37,8 +46,16 @@ public class BaseTest {
 	protected final static String ERGAST_CIRCUIT_ENDPOINT = "/api/f1/2017/circuits.xml";
 	
 	@BeforeSuite
-	public void setupAllureReport() {
+	public void initSetup() {
 		RestAssured.filters(new AllureRestAssured());
+		
+		BASE_URL_GOREST = ConfigManager.get("baseurl.gorest").trim();
+		BASE_URL_REQRES = ConfigManager.get("baseurl.contacts").trim();
+		BASE_URL_REQRES = ConfigManager.get("baseurl.reqres").trim();
+		BASE_URL_REQRES = ConfigManager.get("baseurl.basicauth").trim();
+		BASE_URL_REQRES = ConfigManager.get("baseurl.products").trim();
+		BASE_URL_REQRES = ConfigManager.get("baseurl.amadeus").trim();
+		BASE_URL_REQRES = ConfigManager.get("baseuurl.circuit").trim();
 	}
 	
 	@BeforeTest
