@@ -35,7 +35,7 @@ pipeline
         stage('Sanity API Automation Test on DEV') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/naveenanimation20/Jan2025APIFramework.git'
+                    git 'https://github.com/bnchakri38/RestAssuredFrameworkAPI.git'
                     bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml"
                     
                 }
@@ -55,7 +55,7 @@ pipeline
         stage('Regression API Automation Tests on QA') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/naveenanimation20/Jan2025APIFramework.git'
+                    git 'https://github.com/bnchakri38/RestAssuredFrameworkAPI.git'
                     bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml"
                     
                 }
@@ -99,7 +99,7 @@ pipeline
         stage('Sanity API Automation Test on Stage') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/naveenanimation20/Jan2025APIFramework.git'
+                    git 'https://github.com/bnchakri38/RestAssuredFrameworkAPI.git'
                     bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml"
                     
                 }
@@ -129,7 +129,7 @@ pipeline
         stage('Sanity API Automation Test on PROD') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/naveenanimation20/Jan2025APIFramework.git'
+                    git 'https://github.com/bnchakri38/RestAssuredFrameworkAPI.git'
                     bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml"
                     
                 }
