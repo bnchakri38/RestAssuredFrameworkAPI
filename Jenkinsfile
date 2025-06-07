@@ -31,7 +31,7 @@ pipeline {
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
-                    sh '''
+                    bat '''
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
                         docker push ${DOCKER_IMAGE}
                        '''
@@ -49,7 +49,7 @@ pipeline {
         stage('Run Sanity Tests on Dev') {
 	         steps {
 		           script {
-		            def status = sh(
+		            def status = bat(
 		                script: """
 		                    docker run --rm -v \$WORKSPACE:/app -w /app ${DOCKER_IMAGE} \
 		                    mvn test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=prod
@@ -69,10 +69,10 @@ pipeline {
             }
         }
         
-        stage('Run Sanity Tests on QA') {
+        stage('Run Regression Tests on QA') {
 	         steps {
 		           script {
-		            def status = sh(
+		            def status = bat(
 		                script: """
 		                    docker run --rm -v \$WORKSPACE:/app -w /app ${DOCKER_IMAGE} \
 		                    mvn test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=prod
@@ -86,7 +86,7 @@ pipeline {
 	    	}
 		}
                         
-        stage('Publish Allure Reports') {
+        stage('Publish Regression Allure Reports') {
            steps {
                 script {
                     allure([
@@ -100,7 +100,7 @@ pipeline {
             }
         }
         
-        stage('Publish Sanity ChainTest Report for QA Env'){
+        stage('Publish Regression ChainTest Report for QA Env'){
             steps{
                      publishHTML([allowMissing: false,
                                   alwaysLinkToLastBuild: false, 
@@ -121,7 +121,7 @@ pipeline {
         stage('Run Sanity Tests on Stage') {
 	         steps {
 		           script {
-		            def status = sh(
+		            def status = bat(
 		                script: """
 		                    docker run --rm -v \$WORKSPACE:/app -w /app ${DOCKER_IMAGE} \
 		                    mvn test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=prod
@@ -156,7 +156,7 @@ pipeline {
         stage('Run Sanity Tests on Prod') {
 	         steps {
 		           script {
-		            def status = sh(
+		            def status = bat(
 		                script: """
 		                    docker run --rm -v \$WORKSPACE:/app -w /app ${DOCKER_IMAGE} \
 		                    mvn test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=prod
