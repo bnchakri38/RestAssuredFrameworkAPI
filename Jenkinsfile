@@ -100,7 +100,7 @@ pipeline {
             }
         }
         
-        stage('Publish ChainTest Report'){
+        stage('Publish Sanity ChainTest Report for QA Env'){
             steps{
                      publishHTML([allowMissing: false,
                                   alwaysLinkToLastBuild: false, 
@@ -135,7 +135,7 @@ pipeline {
 	    	}
 		}
 		
-		stage('Publish ChainTest Report'){
+		stage('Publish Sanity ChainTest Report for Stage Env'){
             steps{
                      publishHTML([allowMissing: false,
                                   alwaysLinkToLastBuild: false, 
