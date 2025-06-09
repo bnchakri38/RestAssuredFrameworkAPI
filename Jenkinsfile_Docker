@@ -106,7 +106,7 @@ pipeline {
                                   keepAll: true, 
                                   reportDir: 'target/chaintest', 
                                   reportFiles: 'Index.html', 
-                                  reportName: 'HTML API Regression ChainTest Report', 
+                                  reportName: 'HTML API Regression ChainTest Report - QA', 
                                   reportTitles: ''])
             }
         }
@@ -141,7 +141,7 @@ pipeline {
                                   keepAll: true, 
                                   reportDir: 'target/chaintest', 
                                   reportFiles: 'Index.html', 
-                                  reportName: 'HTML API Regression ChainTest Report', 
+                                  reportName: 'HTML API Sanity ChainTest Report - Stage', 
                                   reportTitles: ''])
             }
         }
